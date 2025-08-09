@@ -1,0 +1,1258 @@
+<!DOCTYPE html>
+<html class="scroll-smooth" lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fenzor Life Sciences</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="icon" type="image/svg+xml" href="Web favicon 16x16.svg" />
+
+
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <style>
+      body {
+        /* font-family: "Inter", Arial, sans-serif; */
+        font-family: "Roboto";
+      }
+      .fenzor-logo {
+        /* font-family: "Playfair Display", serif; */
+        letter-spacing: 0.05em;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Hidden utility classes for Tailwind JIT -->
+    <div class="hidden scale-y-100 opacity-100"></div>
+    <div class="min-h-screen w-full bg-[#f7f7f7] relative overflow-x-hidden">
+      <!-- Navbar -->
+      <header>
+        <nav
+          class="w-full flex items-center justify-between px-4 md:px-10 py-4 bg-white/90 shadow-md fixed top-0 left-0 z-50 border-b border-[#e5e7eb]"
+        >
+          <div class="flex items-center gap-3">
+            <a href="#home" aria-label="Go to Home">
+              <img
+                src="123456789.png"
+                alt="Fenzor Logo"
+                class="w-25 h-15 object-contain cursor-pointer hover:scale-105 transition-transform duration-200"
+              />
+            </a>
+            <!-- <span
+              class="fenzor-logo text-2xl font-bold text-[#222] tracking-wide"
+              >Fenzor</span> -->
+          </div>
+          <ul
+            class="hidden md:flex gap-8 text-base font-medium text-[#222] items-center"
+          >
+            <li>
+              <a href="#home" class="hover:text-[#3a5ba0] transition">Home</a>
+            </li>
+            <li>
+              <a href="#about" class="hover:text-[#3a5ba0] transition"
+                >About Us</a
+              >
+            </li>
+            <li>
+              <a href="#products" class="hover:text-[#3a5ba0] transition"
+                >Products</a
+              >
+            </li>
+            <li>
+              <a href="#directions" class="hover:text-[#3a5ba0] transition"
+                >Our Directions</a
+              >
+            </li>
+            <li>
+              <a href="#contact" class="hover:text-[#3a5ba0] transition"
+                >Contact</a
+              >
+            </li>
+          </ul>
+
+          <div class="md:hidden">
+            <button id="hamburger" class="focus:outline-none relative z-[60] group hover:scale-105 transition-all duration-300" aria-label="Open menu">
+              <span class="block w-8 h-1 bg-[#3a5ba0] rounded transition-all duration-300 group-[.open]:rotate-45 group-[.open]:translate-y-2"></span>
+              <span class="block w-8 h-1 bg-[#3a5ba0] rounded mt-1.5 transition-all duration-300 group-[.open]:opacity-0"></span>
+              <span class="block w-8 h-1 bg-[#3a5ba0] rounded mt-1.5 transition-all duration-300 group-[.open]:-rotate-45 group-[.open]:-translate-y-2"></span>
+            </button>
+          </div>
+        </nav>
+        <!-- Mobile Menu Overlay -->
+        <div id="mobileMenuOverlay" class="fixed inset-0 bg-black/40 z-40 hidden transition-opacity duration-400"></div>
+        <ul
+          id="mobileMenu"
+          class="md:hidden fixed left-0 top-0 w-[85vw] max-w-xs bg-gradient-to-br from-white/90 via-[#f7f7f7]/90 to-[#e6f3f7]/95 backdrop-blur-2xl border border-[#e5e7eb]/70 px-8 pt-10 pb-10 text-[#222] flex flex-col gap-8 shadow-2xl z-50 rounded-r-3xl transform -translate-x-full transition-transform duration-400 ease-in-out items-center justify-start"
+          style="box-shadow: 0 16px 56px 0 rgba(60,100,180,0.22); border-right-width: 2px; max-height: 90vh; min-height: 0; height: auto;"
+        >
+          <li class="py-3 text-xl w-full text-center rounded-xl px-4 hover:bg-gradient-to-r hover:from-[#e6f3f7]/90 hover:to-[#fbbf24]/20 hover:text-[#3a5ba0] hover:shadow-lg transition-all duration-200 font-bold tracking-wide"><a href="#home">Home</a></li>
+          <li class="py-3 text-xl w-full text-center rounded-xl px-4 hover:bg-gradient-to-r hover:from-[#e6f3f7]/90 hover:to-[#fbbf24]/20 hover:text-[#3a5ba0] hover:shadow-lg transition-all duration-200 font-bold tracking-wide"><a href="#about">About Us</a></li>
+          <li class="py-3 text-xl w-full text-center rounded-xl px-4 hover:bg-gradient-to-r hover:from-[#e6f3f7]/90 hover:to-[#fbbf24]/20 hover:text-[#3a5ba0] hover:shadow-lg transition-all duration-200 font-bold tracking-wide"><a href="#products">Products</a></li>
+          <li class="py-3 text-xl w-full text-center rounded-xl px-4 hover:bg-gradient-to-r hover:from-[#e6f3f7]/90 hover:to-[#fbbf24]/20 hover:text-[#3a5ba0] hover:shadow-lg transition-all duration-200 font-bold tracking-wide"><a href="#directions">Our Directions</a></li>
+          <li class="py-3 text-xl w-full text-center rounded-xl px-4 hover:bg-gradient-to-r hover:from-[#e6f3f7]/90 hover:to-[#fbbf24]/20 hover:text-[#3a5ba0] hover:shadow-lg transition-all duration-200 font-bold tracking-wide"><a href="#contact">Contact</a></li>
+        </ul>
+    <script>
+      // Hamburger menu logic
+      const hamburger = document.getElementById('hamburger');
+      const mobileMenu = document.getElementById('mobileMenu');
+      const mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
+      let menuOpen = false;
+      function openMenu() {
+        menuOpen = true;
+        hamburger.classList.add('open');
+        mobileMenu.classList.remove('-translate-x-full');
+        mobileMenu.classList.add('translate-x-0');
+        mobileMenuOverlay.classList.remove('hidden');
+        mobileMenuOverlay.classList.add('opacity-100');
+        document.body.style.overflow = 'hidden';
+      }
+      function closeMenu() {
+        menuOpen = false;
+        hamburger.classList.remove('open');
+        mobileMenu.classList.add('-translate-x-full');
+        mobileMenu.classList.remove('translate-x-0');
+        mobileMenuOverlay.classList.add('hidden');
+        mobileMenuOverlay.classList.remove('opacity-100');
+        document.body.style.overflow = '';
+      }
+      hamburger.addEventListener('click', () => {
+        if (!menuOpen) openMenu();
+        else closeMenu();
+      });
+      mobileMenuOverlay.addEventListener('click', closeMenu);
+      // Close menu on nav click
+      Array.from(mobileMenu.querySelectorAll('a')).forEach(link => {
+        link.addEventListener('click', closeMenu);
+      });
+  // Remove close button logic (no X icon)
+      // Keyboard accessibility
+      document.addEventListener('keydown', (e) => {
+        if (menuOpen && (e.key === 'Escape' || e.key === 'Esc')) closeMenu();
+      });
+    </script>
+      </header>
+
+      <!-- Hero Section -->
+      <section
+        id="home"
+        class="relative w-full min-h-screen flex items-center justify-center bg-[#f6fbfc]  overflow-hidden"
+      >
+        <!-- Decorative shapes -->
+        <div
+          class="absolute top-0 left-0 w-full h-full pointer-events-none z-0"
+        >
+          <div
+            class="absolute top-0 left-0 w-1/2 h-1/2 bg-[#e6f3f7] rounded-br-full"
+            style="clip-path: ellipse(60% 60% at 0% 0%)"
+          ></div>
+          <div
+            class="absolute top-0 right-0 w-1/2 h-1/2 bg-[#d6f0ef] rounded-bl-full"
+            style="clip-path: ellipse(60% 60% at 100% 0%)"
+          ></div>
+          <div
+            class="absolute bottom-0 right-0 w-2/3 h-1/3 bg-[#e6f3f7] rounded-tl-full"
+            style="clip-path: ellipse(60% 60% at 100% 100%)"
+          ></div>
+        </div>
+        <div
+          class="relative z-10 w-full max-w-7xl flex flex-col md:flex-row items-center justify-between gap-8 px-6 md:px-12"
+        >
+          <div class="flex-1 flex flex-col items-start justify-center max-w-xl w-full">
+            <span
+              class="uppercase text-xs tracking-widest text-[#3a5ba0] font-semibold mb-4"
+              >Welcome to Fenzor</span
+            >
+            <h1
+              class="text-4xl md:text-6xl font-bold text-[#222] leading-tight mb-6 text-left"
+            >
+              Hope Beyond Limits.<br />
+              <span class="block text-2xl md:text-5xl text-[#3a5ba0]">
+                In every Life, Moment, Care.<br />
+              </span>
+            </h1>
+            <p
+              id="hero-desc"
+              class="text-[#555] text-base md:text-lg mb-8 transition-all duration-500 overflow-hidden"
+              style="max-height: 4.5em"
+            >
+              is not just a promise — it’s the soul of everything we do at
+              Fenzor Life Sciences. We believe that behind every prescription is
+              a heartbeat, a family, a future waiting to be healed. Whether it’s
+              the quiet strength of a mother caring for her child<span
+                id="hero-ellipsis"
+                >...</span
+              ><span id="hero-more" class="hidden"
+                >, the resilience of a patient facing uncertainty, or the
+                unwavering dedication of a doctor at a bedside — we stand with
+                them all. In every moment of fear, of healing, of hope — we are
+                there, pushing boundaries with compassion and science, to make
+                sure no life is left behind. Because for us, care goes beyond
+                medicine — it touches the very essence of being human.</span
+              >
+            </p>
+            <a
+              href="#about"
+              id="hero-toggle"
+              class="inline-flex items-center gap-2 px-6 py-3 border-2 border-[#3a5ba0] text-[#3a5ba0] font-semibold rounded-full hover:bg-[#3a5ba0] hover:text-white transition text-base shadow select-none cursor-pointer"
+            >
+              Learn More
+              <svg
+                class="w-4 h-4 ml-1 transition-transform duration-300"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M9 5l7 7-7 7"
+                />
+              </svg>
+            </a>
+            <script>
+              const desc = document.getElementById("hero-desc");
+              const more = document.getElementById("hero-more");
+              const ellipsis = document.getElementById("hero-ellipsis");
+              const toggle = document.getElementById("hero-toggle");
+              let expanded = false;
+              toggle.addEventListener("click", (e) => {
+                e.preventDefault();
+                expanded = !expanded;
+                if (expanded) {
+                  more.classList.remove("hidden");
+                  ellipsis.classList.add("hidden");
+                  desc.style.maxHeight = "1000px";
+                  toggle.innerHTML = `Show Less
+                        <svg class="w-4 h-4 ml-1 transition-transform duration-300 rotate-180" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/>
+                        </svg>`;
+                } else {
+                  more.classList.add("hidden");
+                  ellipsis.classList.remove("hidden");
+                  desc.style.maxHeight = "4.5em";
+                  toggle.innerHTML = `Learn More
+                        <svg class="w-4 h-4 ml-1 transition-transform duration-300" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/>
+                        </svg>`;
+                }
+              });
+            </script>
+          </div>
+          <div class="flex-1 flex items-center justify-center relative">
+            <img
+              src="Fenzor-Web-Landing-Page[1].jpg"
+              alt="Family Health"
+              class="w-full  sm:max-w-md md:max-w-lg lg:max-w-xl object-contain drop-shadow-2xl rounded-3xl bg-white/80"
+              style="box-shadow: 0 8px 32px 0 rgba(60, 100, 180, 0.1)"
+            />
+          </div>
+        </div>
+      </section>
+
+      <!-- About Section -->
+      <section
+        id="about"
+  class="w-full bg-gradient-to-br from-white via-[#f7f7f7] to-[#bdbdbd] text-[#383838] px-12  flex flex-col items-center py-24 px-2 sm:px-4 md:px-6 relative overflow-hidden"
+      >
+        <!-- Decorative background shapes -->
+        <div
+          class="absolute left-0 top-0 w-full h-full opacity-10 pointer-events-none select-none"
+          style="background: url('bg_fenzor.png') right center/cover no-repeat"
+        ></div>
+        <div
+          class="absolute -top-16 -left-16 w-64 h-64 bg-gradient-to-br from-[#3a5ba0]/20 via-[#e6f3f7]/60 to-transparent rounded-full blur-2xl"
+        ></div>
+        <div
+          class="absolute bottom-0 right-0 w-80 h-80 bg-gradient-to-tr from-[#fbbf24]/20 via-[#3a5ba0]/10 to-transparent rounded-full blur-2xl"
+        ></div>
+        <div
+          class="relative z-10 w-full max-w-6xl flex flex-col md:flex-row items-center md:items-center gap-12 md:gap-20"
+        >
+          <div
+            class="flex-1 flex flex-col justify-center items-center md:items-start h-full"
+          >
+            <h2
+              class="font-bold text-5xl md:text-6xl mb-4 fenzor-logo drop-shadow-lg text-center md:text-left bg-gradient-to-r from-[#3a5ba0] to-[#9ba2b6] bg-clip-text text-transparent animate-gradient-x"
+            >
+              About Us
+            </h2>
+            <div
+              class="h-1 w-24 bg-gradient-to-r from-[#3a5ba0] to-[#fbbf24] rounded mb-8"
+            ></div>
+            <p
+              class="text-lg md:text-xl leading-relaxed text-center md:text-left mb-8"
+            >
+              <span class="font-semibold text-[#3a5ba0]"
+                >Fenzor Life Sciences</span
+              >
+            </p>
+
+            <p>
+              is a purpose-driven pharmaceutical marketing company built on a
+              vision to make advanced and ethical healthcare accessible across
+              every corner of India.
+            </p>
+
+            <br />
+
+            <p>
+              Formed by a young pharmaceutical professional with hands-on
+              experience in field operations, Fenzor was conceptualized with a
+              dream to transition from frontline execution to strategic
+              innovation.
+            </p>
+            <br />
+            <p>
+              By focusing on evidence-based formulations, targeted therapies,
+              and patient-centric marketing, Fenzor aims to stand apart as a
+              new-generation pharmaceutical brand that blends ground-level
+              understanding with future-forward execution.
+            </p>
+
+            <br />
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 w-full mb-8">
+              <div
+                class="bg-white/90 backdrop-blur-md rounded-2xl shadow-lg p-5 flex items-center gap-4 border border-[#bdbdbd]/30 hover:scale-105 transition-transform duration-300 group"
+              >
+                <div
+                  class="bg-gradient-to-br from-[#3a5ba0]/20 to-[#fbbf24]/20 rounded-full p-2"
+                >
+                  <svg
+                    class="w-8 h-8 text-[#3a5ba0] group-hover:scale-110 transition-transform"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M12 4v16m8-8H4"
+                    />
+                  </svg>
+                </div>
+                <span class="font-semibold text-base md:text-lg"
+                  >Innovation in Medicine</span
+                >
+              </div>
+              <div
+                class="bg-white/90 backdrop-blur-md rounded-2xl shadow-lg p-5 flex items-center gap-4 border border-[#bdbdbd]/30 hover:scale-105 transition-transform duration-300 group"
+              >
+                <div
+                  class="bg-gradient-to-br from-[#3a5ba0]/20 to-[#60a5fa]/20 rounded-full p-2"
+                >
+                  <svg
+                    class="w-8 h-8 text-[#3a5ba0] group-hover:scale-110 transition-transform"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M5 13l4 4L19 7"
+                    />
+                  </svg>
+                </div>
+                <span class="font-semibold text-base md:text-lg"
+                  >Trust & Clarity</span
+                >
+              </div>
+              <div
+                class="bg-white/90 backdrop-blur-md rounded-2xl shadow-lg p-5 flex items-center gap-4 border border-[#bdbdbd]/30 hover:scale-105 transition-transform duration-300 group"
+              >
+                <div
+                  class="bg-gradient-to-br from-[#fbbf24]/20 to-[#3a5ba0]/20 rounded-full p-2"
+                >
+                  <svg
+                    class="w-8 h-8 text-[#3a5ba0] group-hover:scale-110 transition-transform"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M12 8c-1.657 0-3 1.343-3 3 0 1.657 1.343 3 3 3s3-1.343 3-3c0-1.657-1.343-3-3-3zm0 0V4m0 8v4m8-4a8 8 0 11-16 0 8 8 0 0116 0z"
+                    />
+                  </svg>
+                </div>
+                <span class="font-semibold text-base md:text-lg"
+                  >Care & Responsibility</span
+                >
+              </div>
+              <div
+                class="bg-white/90 backdrop-blur-md rounded-2xl shadow-lg p-5 flex items-center gap-4 border border-[#bdbdbd]/30 hover:scale-105 transition-transform duration-300 group"
+              >
+                <div
+                  class="bg-gradient-to-br from-[#60a5fa]/20 to-[#3a5ba0]/20 rounded-full p-2"
+                >
+                  <svg
+                    class="w-8 h-8 text-[#3a5ba0] group-hover:scale-110 transition-transform"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M13 16h-1v-4h-1m4 0h-1v4h-1"
+                    />
+                  </svg>
+                </div>
+                <span class="font-semibold text-base md:text-lg"
+                  >Progressive Vision</span
+                >
+              </div>
+            </div>
+          </div>
+          <div
+            class="flex-1 flex justify-center md:justify-end items-center h-full"
+          >
+            <div
+              class="bg-gradient-to-br from-[#e6f3f7] via-white to-[#bdbdbd]/40 rounded-3xl shadow-2xl py-10 px-7 flex flex-col items-center max-w-lg border border-[#bdbdbd]/30 h-full justify-center transition-all duration-300 hover:scale-105"
+            >
+              <img
+                src="123456789.png"
+                alt="Fenzor Logo"
+                class="w-25 h-20 object-contain mb-2 drop-shadow-lg"
+              />
+              <div
+                class="fenzor-logo text-2xl font-bold text-[#3a5ba0] mb-2 text-center bg-gradient-to-r from-[#3a5ba0] to-[#9ba2b6] bg-clip-text text-transparent"
+              >
+                Our Vision
+              </div>
+              <div
+                class="h-1 w-12 bg-gradient-to-r from-[#3a5ba0]/70 to-[#fbbf24]/70 rounded mb-4"
+              ></div>
+              <div class="w-full text-left">
+                <div class="text-lg font-semibold text-[#3a5ba0] mb-2">
+                  To bring hope beyond limits by making meaningful, affordable
+                  healthcare accessible to every life we touch.
+                </div>
+                <p
+                  class="mb-3 text-base md:text-lg leading-relaxed text-[#383838]"
+                >
+                  Fenzor Life Sciences was born from lived experiences on the
+                  ground, where we saw not just the science of healing, but the
+                  human stories behind every prescription. Our vision is to
+                  stand by the patient, the doctor, the pharmacist, and the
+                  caregiver—with products that heal, and a purpose that uplifts.
+                </p>
+                <p class="text-base md:text-lg leading-relaxed text-[#383838]">
+                  We believe that every medicine should carry with it a promise
+                  of trust, a touch of empathy, and the strength of
+                  <span class="font-semibold text-[#3a5ba0]">science</span>.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Directions Section -->
+      <section
+        id="directions"
+        class="w-full bg-gradient-to-br from-[#f7f7f7] via-white to-[#bdbdbd] text-[#383838] flex flex-col items-center py-24 px-6 relative overflow-hidden"
+      >
+        <div
+          class="absolute left-0 top-0 w-full h-full opacity-10 pointer-events-none select-none"
+          style="background: url('bg_fenzor.png') right center/cover no-repeat"
+        ></div>
+        <div
+          class="relative z-10 w-full max-w-4xl mx-auto bg-white/90 backdrop-blur-md rounded-2xl shadow-2xl p-10 border border-[#bdbdbd]/50 flex flex-col items-center"
+        >
+          <h2
+            class="font-bold text-4xl mb-4 fenzor-logo bg-gradient-to-r from-[#3a5ba0] to-[#9ba2b6] bg-clip-text text-transparent"
+          >
+            Our Core Values
+          </h2>
+          <div class="h-1 w-24 bg-[#3a5ba0] rounded mb-6 mx-auto"></div>
+          <p
+            class="text-base md:text-lg leading-relaxed text-center mb-8 text-[#383838]"
+          >
+            We are guided by principles that define who we are — blending
+            empathy, ethics, and innovation into every step of our journey. Our
+            core values reflect our commitment to people, purpose, and progress:
+          </p>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8 w-full">
+            <div
+              class="flex flex-col items-center bg-white/80 backdrop-blur-md rounded-xl shadow p-6 border border-[#bdbdbd]/40"
+            >
+              <!-- Empathy First: Heart icon -->
+              <svg
+                class="w-10 h-10 mb-2"
+                viewBox="0 0 24 24"
+                fill="url(#heart-gradient)"
+              >
+                <defs>
+                  <linearGradient
+                    id="heart-gradient"
+                    x1="0"
+                    y1="0"
+                    x2="0"
+                    y2="1"
+                  >
+                    <stop offset="0%" stop-color="#fbbf24" />
+                    <stop offset="50%" stop-color="#f87171" />
+                    <stop offset="100%" stop-color="#3a5ba0" />
+                  </linearGradient>
+                </defs>
+                <path
+                  d="M12 21s-6.5-5.2-9-8.5C1.1 10.1 2.2 7 5 7c1.7 0 3 1.2 3.7 2.3C9.9 8.2 11.2 7 13 7c2.8 0 3.9 3.1 2 5.5-2.5 3.3-9 8.5-9 8.5z"
+                  stroke="#f87171"
+                  stroke-width="2"
+                  fill="url(#heart-gradient)"
+                />
+              </svg>
+              <div class="font-semibold text-lg mb-1">Empathy First</div>
+              <p class="text-[#83899a] text-center">
+                We believe that every prescription touches a life, a family, a
+                story. We lead with compassion in every interaction.
+              </p>
+            </div>
+            <div
+              class="flex flex-col items-center bg-white/80 backdrop-blur-md rounded-xl shadow p-6 border border-[#bdbdbd]/40"
+            >
+              <!-- People Over Profits: Group/Users icon -->
+              <svg class="w-10 h-10 mb-2" viewBox="0 0 32 32" fill="none">
+                <!-- Main user -->
+                <circle cx="10" cy="12" r="5" fill="#3a5ba0" />
+                <circle
+                  cx="10"
+                  cy="12"
+                  r="5"
+                  fill="url(#user1-gradient)"
+                  opacity="0.7"
+                />
+                <!-- Right user -->
+                <circle cx="22" cy="15" r="4" fill="#60a5fa" />
+                <circle
+                  cx="22"
+                  cy="15"
+                  r="4"
+                  fill="url(#user2-gradient)"
+                  opacity="0.7"
+                />
+                <!-- Left user -->
+                <circle cx="6" cy="18" r="3" fill="#fbbf24" />
+                <circle
+                  cx="6"
+                  cy="18"
+                  r="3"
+                  fill="url(#user3-gradient)"
+                  opacity="0.7"
+                />
+                <!-- Main user body -->
+                <ellipse
+                  cx="10"
+                  cy="23"
+                  rx="7"
+                  ry="4"
+                  fill="#3a5ba0"
+                  fill-opacity="0.15"
+                />
+                <!-- Right user body -->
+                <ellipse
+                  cx="22"
+                  cy="23"
+                  rx="5"
+                  ry="3"
+                  fill="#60a5fa"
+                  fill-opacity="0.15"
+                />
+                <!-- Left user body -->
+                <ellipse
+                  cx="6"
+                  cy="23"
+                  rx="3.5"
+                  ry="2"
+                  fill="#fbbf24"
+                  fill-opacity="0.15"
+                />
+                <defs>
+                  <radialGradient id="user1-gradient" cx="50%" cy="50%" r="60%">
+                    <stop offset="0%" stop-color="#fff" />
+                    <stop offset="100%" stop-color="#3a5ba0" />
+                  </radialGradient>
+                  <radialGradient id="user2-gradient" cx="50%" cy="50%" r="60%">
+                    <stop offset="0%" stop-color="#fff" />
+                    <stop offset="100%" stop-color="#60a5fa" />
+                  </radialGradient>
+                  <radialGradient id="user3-gradient" cx="50%" cy="50%" r="60%">
+                    <stop offset="0%" stop-color="#fff" />
+                    <stop offset="100%" stop-color="#fbbf24" />
+                  </radialGradient>
+                </defs>
+              </svg>
+              <div class="font-semibold text-lg mb-1">People Over Profits</div>
+              <p class="text-[#83899a] text-center">
+                We value long-term trust over short-term gain. Every person —
+                employee, partner, or patient — matters deeply.
+              </p>
+            </div>
+            <div
+              class="flex flex-col items-center bg-white/80 backdrop-blur-md rounded-xl shadow p-6 border border-[#bdbdbd]/40"
+            >
+              <!-- Purpose-Driven Innovation: Lightbulb icon -->
+              <svg class="w-10 h-10 mb-2" viewBox="0 0 24 24" fill="none">
+                <defs>
+                  <radialGradient id="bulb-glow" cx="50%" cy="50%" r="70%">
+                    <stop offset="0%" stop-color="#fffbe6" />
+                    <stop offset="70%" stop-color="#ffe066" />
+                    <stop offset="100%" stop-color="#ffd700" />
+                  </radialGradient>
+                </defs>
+                <path
+                  d="M9 18h6"
+                  stroke="#3a5ba0"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                />
+                <path
+                  d="M10 21h4"
+                  stroke="#3a5ba0"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                />
+                <path
+                  d="M12 2a7 7 0 017 7c0 2.4-1.3 4.5-3.2 5.6A2.5 2.5 0 0112 19.5A2.5 2.5 0 018.2 14.6C6.3 13.5 5 11.4 5 9a7 7 0 017-7z"
+                  fill="url(#bulb-glow)"
+                  stroke="#fbbf24"
+                  stroke-width="2"
+                />
+                <circle
+                  cx="12"
+                  cy="9"
+                  r="5"
+                  fill="url(#bulb-glow)"
+                  opacity="0.7"
+                />
+              </svg>
+              <div class="font-semibold text-lg mb-1">
+                Purpose-Driven Innovation
+              </div>
+              <p class="text-[#83899a] text-center">
+                We solve real-world healthcare challenges with intention,
+                creating meaningful and lasting impact.
+              </p>
+            </div>
+            <div
+              class="flex flex-col items-center bg-white/80 backdrop-blur-md rounded-xl shadow p-6 border border-[#bdbdbd]/40"
+            >
+              <!-- Growth with Grace: Graph icon -->
+              <svg class="w-10 h-10 mb-2" viewBox="0 0 24 24" fill="none">
+                <rect
+                  x="3"
+                  y="13"
+                  width="3.5"
+                  height="8"
+                  rx="1.5"
+                  fill="#3a5ba0"
+                />
+                <rect
+                  x="9"
+                  y="9"
+                  width="3.5"
+                  height="12"
+                  rx="1.5"
+                  fill="#60a5fa"
+                />
+                <rect
+                  x="15"
+                  y="5"
+                  width="3.5"
+                  height="16"
+                  rx="1.5"
+                  fill="#fbbf24"
+                />
+                <path
+                  d="M4.75 15.5L10.5 11l4.5 3.5 4.25-7"
+                  stroke="#3a5ba0"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+                <circle cx="4.75" cy="15.5" r="1" fill="#3a5ba0" />
+                <circle cx="10.5" cy="11" r="1" fill="#60a5fa" />
+                <circle cx="15" cy="14.5" r="1" fill="#fbbf24" />
+                <circle cx="18.75" cy="8.5" r="1" fill="#3a5ba0" />
+              </svg>
+              <div class="font-semibold text-lg mb-1">Growth with Grace</div>
+              <p class="text-[#83899a] text-center">
+                We grow with ambition and humility, building ethical solutions
+                grounded in real-world needs.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Products Section -->
+      <section
+        id="products"
+        class="w-full bg-gradient-to-br from-white via-[#f7f7f7] to-[#bdbdbd] text-[#383838] flex flex-col items-center py-24 px-6 relative overflow-hidden"
+      >
+        <!-- Decorative background shapes -->
+        <div class="absolute left-0 top-0 w-full h-full opacity-10 pointer-events-none select-none" style="background: url('bg_fenzor.png') right center/cover no-repeat"></div>
+        <div class="absolute -top-16 -left-16 w-64 h-64 bg-gradient-to-br from-[#3a5ba0]/20 via-[#e6f3f7]/60 to-transparent rounded-full blur-2xl"></div>
+        <div class="absolute bottom-0 right-0 w-80 h-80 bg-gradient-to-tr from-[#fbbf24]/20 via-[#3a5ba0]/10 to-transparent rounded-full blur-2xl"></div>
+        <div class="relative z-10 w-full max-w-7xl flex flex-col items-center">
+          <h2 class="font-bold text-3xl sm:text-4xl md:text-5xl lg:text-6xl mb-6 fenzor-logo text-[#3a5ba0] drop-shadow-lg tracking-wide bg-gradient-to-r from-[#3a5ba0] to-[#9ba2b6] bg-clip-text text-transparent animate-gradient-x text-center">Our Products</h2>
+          <div class="h-1 w-32 bg-gradient-to-r from-[#3a5ba0] to-[#fbbf24] rounded mb-10 mx-auto"></div>
+          <p class="text-xl md:text-2xl text-[#555] mb-14 text-center max-w-3xl">
+            Discover our innovative range of products designed to deliver hope, healing, and care. Each product is crafted with science, compassion, and a commitment to quality.
+          </p>
+
+          <!-- Carousel Section for Products -->
+          <div id="product-carousel" class="w-full max-w-7xl mx-auto relative">
+            <div class="overflow-hidden w-full">
+              <div id="carousel-track" class="flex gap-4 sm:gap-6 md:gap-8 transition-transform duration-500"></div>
+            </div>
+          </div>
+          <script>
+            // Carousel data (11 products)
+            const carouselProducts = [
+              { img: "products1.jpg", name: "" },
+              { img: "product2.jpg", name: "" },
+              { img: "product3.jpg", name: "" },
+              { img: "product4.jpg", name: "" },
+              { img: "product5.jpg", name: "" },
+              { img: "product6.jpg", name: "" },
+              { img: "product7.jpg", name: "" },
+              { img: "product8.jpg", name: "" },
+              { img: "product9.jpg", name: "" },
+              { img: "product10.jpg", name: "" },
+              { img: "product11.jpg", name: "" }
+            ];
+            const carouselTrack = document.getElementById('carousel-track');
+            let carouselVisible = 3;
+            let cardWidth = 336; // 320px card + 16px gap
+            let animationFrame;
+            let position = 0;
+            let totalCards = carouselProducts.length;
+
+            function getCardWidth() {
+              // Get the actual card width + gap based on screen size
+              if (window.innerWidth < 640) return 320 + 16;
+              if (window.innerWidth < 1024) return 320 + 24;
+              if (window.innerWidth < 1536) return 320 + 32;
+              return 320 + 40;
+            }
+
+            function getVisibleCount() {
+              if (window.innerWidth < 640) return 1;
+              if (window.innerWidth < 1024) return 2;
+              if (window.innerWidth < 1536) return 3;
+              return 4;
+            }
+
+            function renderCarousel() {
+              carouselVisible = getVisibleCount();
+              cardWidth = getCardWidth();
+              carouselTrack.innerHTML = '';
+              // Duplicate cards for seamless infinite scroll
+              const allProducts = [...carouselProducts, ...carouselProducts.slice(0, carouselVisible)];
+              allProducts.forEach((p, i) => {
+                const card = document.createElement('div');
+                card.className = `min-w-[320px] max-w-[320px] rounded-3xl border border-[#e5e7eb]/60 shadow-lg flex flex-col items-center relative overflow-hidden transition-all duration-500 group`;
+                card.innerHTML = `
+                  <div style="width:100%;height:0;padding-bottom:100%;position:relative;display:flex;align-items:center;justify-content:center;">
+                    <img src="${p.img}" alt="${p.name}" class="w-full h-full object-cover rounded-2xl shadow-md transition-transform duration-500 group-hover:scale-105" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;" />
+                    <div style="position:absolute;bottom:18px;left:0;width:100%;color:#fff;font-weight:800;font-size:1.35rem;text-align:center;letter-spacing:0.04em;text-shadow:0 2px 12px #222,0 1px 8px #3a5ba0;pointer-events:none;">${p.name}</div>
+                  </div>
+                `;
+                card.onmouseenter = () => {
+                  card.style.boxShadow = '0 16px 48px 0 rgba(60,100,180,0.22)';
+                };
+                card.onmouseleave = () => {
+                  card.style.boxShadow = '0 8px 32px 0 rgba(60,100,180,0.13)';
+                };
+                carouselTrack.appendChild(card);
+              });
+              position = 0;
+              carouselTrack.style.transform = `translateX(0px)`;
+            }
+
+            function animateCarousel() {
+              position -= 1;
+              const totalCardsWithClones = carouselProducts.length + carouselVisible;
+              const maxScroll = cardWidth * totalCardsWithClones;
+              // When we've scrolled past the original set, jump instantly to the start (after clones)
+              if (-position >= cardWidth * carouselProducts.length) {
+                position = 0;
+                carouselTrack.style.transition = 'none';
+                carouselTrack.style.transform = `translateX(${position}px)`;
+                // Force reflow to apply the jump instantly
+                void carouselTrack.offsetWidth;
+                carouselTrack.style.transition = '';
+              } else {
+                carouselTrack.style.transform = `translateX(${position}px)`;
+              }
+              animationFrame = requestAnimationFrame(animateCarousel);
+            }
+
+            function startCarousel() {
+              cancelAnimationFrame(animationFrame);
+              renderCarousel();
+              position = 0;
+              animateCarousel();
+            }
+
+            window.addEventListener('resize', startCarousel);
+            startCarousel();
+          </script>
+
+          <!-- View More Button -->
+
+          <div class="w-full flex justify-center items-center mt-12">
+            <button id="viewMoreBtn"
+              class="inline-flex items-center gap-2 sm:gap-4 justify-center bg-gradient-to-r from-[#3a5ba0] via-[#60a5fa] to-[#fbbf24] hover:from-[#1a2a33] hover:via-[#3a5ba0] hover:to-[#fbbf24] text-white font-bold text-base sm:text-xl px-6 sm:px-10 md:px-14 py-4 sm:py-5 rounded-full shadow-2xl transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-[#3a5ba0]/30 focus:ring-offset-2 select-none cursor-pointer group"
+              style="letter-spacing:0.04em;"
+            >
+              <span class="relative flex items-center">
+                <svg
+                  class="w-8 h-8 mr-2 text-white group-hover:scale-110 transition-transform duration-300 drop-shadow"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.5"
+                  viewBox="0 0 24 24"
+                >
+                  <circle/>
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/>
+                </svg>
+                <span class="">View All</span>
+                <!-- <span class="sm:hidden">More</span> -->
+              </span>
+            </button>
+            <div id="categoryOptions" class="hidden flex-col items-center gap-8 mt-10 w-full">
+              <div id="categoryTransitionWrap" class="division-fade-slide">
+              <div class="flex flex-col md:flex-row gap-6 md:gap-12 w-full justify-center mt-4">
+                <!-- Category A Card -->
+                <div class= "bg-[url(Elaris1.png)] bg-contain  w-full min-h-[14rem] sm:min-h-[20rem] bg-center bg-no-repeat relative group bg-white rounded-3xl shadow-2xl p-6 sm:p-8 md:p-10 md:px-20 flex flex-row items-end justify-center  mx-auto transition-transform duration-300 hover:scale-105 hover:shadow-2xl hover:border-[#3a5ba0]/40 overflow-hidden">
+                  <!-- Pattern background -->
+                  <!-- <div class="absolute inset-0 right-0 w-full h-full pointer-events-none z-0" style="background: url('checkerboard.png') right center/40% auto no-repeat; opacity:0.18; filter: blur(0.5px);"></div> -->
+                  <!-- Decorative floating shapes -->
+                  <!-- <div class="absolute -top-8 -left-8 w-24 h-24 bg-gradient-to-br from-[#3a5ba0]/10 to-[#fbbf24]/10 rounded-full blur-2xl opacity-60 pointer-events-none"></div> -->
+                  <!-- <div class="absolute -bottom-8 -right-8 w-20 h-20 bg-gradient-to-tr from-[#fbbf24]/20 to-[#3a5ba0]/10 rounded-full blur-2xl opacity-50 pointer-events-none"></div> -->
+                  <!-- <div class="w-24 h-24 sm:w-32 sm:h-32 rounded-2xl bg-gradient-to-br from-[#f7fafc] to-[#e5e7eb] shadow flex items-center justify-center mb-6 overflow-hidden border-2 border-[#3a5ba0]/10 relative z-10">
+                    <img src="1.png" alt="Category A" class="w-16 h-16 sm:w-24 sm:h-24 md:w-28 md:h-28 object-contain drop-shadow-xl transition-transform duration-300 group-hover:scale-110" />
+                  </div> -->
+                  <!-- <div class="font-extrabold text-2xl mb-2 text-[#3a5ba0] text-center tracking-wide drop-shadow-sm relative z-10">Elaris</div> -->
+                  <!-- <p class="text-base text-[#555] text-center mb-4 relative z-10">Explore our innovative and trusted range of Category A products, crafted for excellence and care.</p> -->
+                  <a href="categoryA.html" class="inline-flex items-center gap-2 justify-center bg-gradient-to-r from-[#3a5ba0] to-[#60a5fa] hover:from-[#1a2a33] hover:to-[#3a5ba0] text-white font-semibold text-base px-8 py-3 rounded-full shadow-lg transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-[#3a5ba0] focus:ring-offset-2 select-none cursor-pointer mt-2 relative z-10">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+                    Explore
+                  </a>
+                </div>
+                <div class= "bg-[url(Evantis.png)] bg-contain  w-full min-h-[14rem] sm:min-h-[20rem] bg-center bg-no-repeat relative group bg-white rounded-3xl shadow-2xl p-6 sm:p-8 md:p-10 md:px-20 flex flex-row items-end justify-center  mx-auto transition-transform duration-300 hover:scale-105 hover:shadow-2xl hover:border-[#3a5ba0]/40 overflow-hidden">
+               
+                  <!-- Pattern background -->
+                  <!-- <div class="absolute inset-0 right-0 w-full h-full pointer-events-none z-0" style="background: url('checkerboard.png') right center/40% auto no-repeat; opacity:0.18; filter: blur(0.5px);"></div> -->
+                  <!-- Decorative floating shapes -->
+                  <!-- <div class="absolute -top-8 -left-8 w-24 h-24 bg-gradient-to-br from-[#3a5ba0]/10 to-[#fbbf24]/10 rounded-full blur-2xl opacity-60 pointer-events-none"></div> -->
+                  <!-- <div class="absolute -bottom-8 -right-8 w-20 h-20 bg-gradient-to-tr from-[#fbbf24]/20 to-[#3a5ba0]/10 rounded-full blur-2xl opacity-50 pointer-events-none"></div> -->
+                  <!-- <div class="w-24 h-24 sm:w-32 sm:h-32 rounded-2xl bg-gradient-to-br from-[#f7fafc] to-[#e5e7eb] shadow flex items-center justify-center mb-6 overflow-hidden border-2 border-[#3a5ba0]/10 relative z-10">
+                    <img src="1.png" alt="Category A" class="w-16 h-16 sm:w-24 sm:h-24 md:w-28 md:h-28 object-contain drop-shadow-xl transition-transform duration-300 group-hover:scale-110" />
+                  </div> -->
+                  <!-- <div class="font-extrabold text-2xl mb-2 text-[#3a5ba0] text-center tracking-wide drop-shadow-sm relative z-10">Elaris</div> -->
+                  <!-- <p class="text-base text-[#555] text-center mb-4 relative z-10">Explore our innovative and trusted range of Category A products, crafted for excellence and care.</p> -->
+                  <a href="categoryB.html" class="inline-flex items-center gap-2 justify-center bg-gradient-to-r from-[#3a5ba0] to-[#60a5fa] hover:from-[#1a2a33] hover:to-[#3a5ba0] text-white font-semibold text-base px-8 py-3 rounded-full shadow-lg transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-[#3a5ba0] focus:ring-offset-2 select-none cursor-pointer mt-2 relative z-10">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+                    Explore
+                  </a>
+                </div>
+             
+             
+              </div>
+              <div class="flex w-full justify-center mt-10">
+                <button id="showLessBtn" class="inline-flex items-center gap-2 sm:gap-3 justify-center bg-gradient-to-r from-[#fbbf24] to-[#3a5ba0] hover:from-[#3a5ba0] hover:to-[#fbbf24] text-white font-bold text-base sm:text-lg px-6 sm:px-10 py-3 sm:py-4 rounded-full shadow-lg transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-[#fbbf24] focus:ring-offset-2 select-none cursor-pointer">
+                  <svg class="w-7 h-7 mr-2" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg>
+                  Show Less
+                </button>
+              </div>
+              <style>
+                .division-fade-slide {
+                  opacity: 0;
+                  transform: translateY(40px);
+                  pointer-events: auto;
+                  transition: opacity 0.6s cubic-bezier(.22,1,.36,1), transform 0.6s cubic-bezier(.22,1,.36,1);
+                  will-change: opacity, transform;
+                }
+                .division-fade-slide.active {
+                  opacity: 1;
+                  transform: translateY(0);
+                }
+                .division-fade-slide.exit {
+                  opacity: 0;
+                  transform: translateY(40px);
+                  pointer-events: none;
+                  transition: opacity 0.25s cubic-bezier(.22,1,.36,1), transform 0.25s cubic-bezier(.22,1,.36,1);
+                }
+              </style>
+            </div>
+<script>
+  const viewMoreBtn = document.getElementById('viewMoreBtn');
+  const categoryOptions = document.getElementById('categoryOptions');
+  const categoryTransitionWrap = document.getElementById('categoryTransitionWrap');
+  let showLessBtn = null;
+  if (viewMoreBtn && categoryOptions && categoryTransitionWrap) {
+    viewMoreBtn.addEventListener('click', () => {
+      viewMoreBtn.style.display = 'none';
+      categoryOptions.classList.remove('hidden');
+      categoryOptions.classList.add('flex');
+      setTimeout(() => {
+        categoryTransitionWrap.classList.add('active');
+        categoryTransitionWrap.classList.remove('exit');
+      }, 10);
+      setTimeout(() => {
+        showLessBtn = document.getElementById('showLessBtn');
+        if (showLessBtn) {
+          showLessBtn.onclick = () => {
+            showLessBtn.disabled = true;
+            categoryTransitionWrap.classList.remove('active');
+            categoryTransitionWrap.classList.add('exit');
+            setTimeout(() => {
+              categoryOptions.classList.remove('flex');
+              categoryOptions.classList.add('hidden');
+              viewMoreBtn.style.display = '';
+              showLessBtn.disabled = false;
+              categoryTransitionWrap.classList.remove('exit');
+            }, 250);
+          };
+        }
+      }, 20);
+    });
+  }
+</script>
+          </div>
+        </div>
+      </section>
+
+
+                  
+            </div>
+           
+          </div>
+
+          <!-- View More Button -->
+          
+
+      <!-- Contact Section -->
+      <section
+        id="contact"
+        class="w-full bg-gradient-to-br from-[#f7f7f7] via-white to-[#bdbdbd]/40 text-[#383838] flex flex-col items-center py-24 px-6 relative overflow-hidden"
+      >
+        <!-- Decorative background shapes -->
+        <div
+          class="absolute left-0 top-0 w-full h-full opacity-10 pointer-events-none select-none"
+          style="background: url('bg_fenzor.png') right center/cover no-repeat"
+        ></div>
+        <div
+          class="absolute -top-16 -left-16 w-64 h-64 bg-gradient-to-br from-[#3a5ba0]/20 via-[#e6f3f7]/60 to-transparent rounded-full blur-2xl"
+        ></div>
+        <div
+          class="absolute bottom-0 right-0 w-80 h-80 bg-gradient-to-tr from-[#fbbf24]/20 via-[#3a5ba0]/10 to-transparent rounded-full blur-2xl"
+        ></div>
+        <div
+          class="relative z-10 w-full max-w-3xl mx-auto flex flex-col md:flex-row gap-12 items-center justify-center"
+        >
+          <div
+            class="flex-1 flex flex-col items-center md:items-start mb-8 md:mb-0"
+          >
+            <h2
+              class="font-bold text-5xl mb-4 fenzor-logo drop-shadow-lg text-center md:text-left bg-gradient-to-r from-[#3a5ba0] to-[#9ba2b6] bg-clip-text text-transparent animate-gradient-x"
+            >
+              Contact Us
+            </h2>
+            <div
+              class="h-1 w-24 bg-gradient-to-r from-[#3a5ba0] to-[#fbbf24] rounded mb-6"
+            ></div>
+            <p
+              class="text-lg md:text-xl leading-relaxed text-center md:text-left mb-6"
+            >
+              We'd love to hear from you.<br />
+              Reach out for business inquiries, partnership opportunities, or
+              just to say hello.
+            </p>
+            <div
+              class="flex flex-col gap-4 text-base md:text-lg text-[#383838] mt-4 w-full"
+            >
+              <a
+                href="tel:+919946502468"
+                class="inline-flex items-center gap-3 justify-center bg-gradient-to-r from-[#3a5ba0] to-[#60a5fa] hover:from-[#1a2a33] hover:to-[#3a5ba0] text-white font-semibold px-8 py-3 rounded-full shadow-lg transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-[#3a5ba0] focus:ring-offset-2"
+              >
+                <svg
+                  class="w-6 h-6"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M3 5a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H5a2 2 0 01-2-2V5zm0 12a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H5a2 2 0 01-2-2v-2zm12-12a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V5zm0 12a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"
+                  />
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M16 12a4 4 0 01-8 0"
+                  />
+                </svg>
+                Call Us:
+                <span class="font-bold tracking-wide">+91 99465 02468</span>
+              </a>
+              <a
+                href="mailto:connect@fenzorlife.com"
+                class="inline-flex items-center gap-3 justify-center bg-gradient-to-r from-[#fbbf24] to-[#3a5ba0] hover:from-[#3a5ba0] hover:to-[#fbbf24] text-white font-semibold px-8 py-3 rounded-full shadow-lg transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-[#fbbf24] focus:ring-offset-2"
+              >
+                <svg
+                  class="w-6 h-6"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M16 12H8m8 0l-8-8m8 8l-8 8"
+                  />
+                </svg>
+                Email:
+                <span class="font-bold tracking-wide"
+                  >connect@fenzorlife.com</span
+                >
+              </a>
+            </div>
+            <div class="flex gap-4 mt-8">
+              <a
+                href="https://wa.me/919946502468?text=Hi, Fenzor"
+                target="_blank"
+                title="WhatsApp"
+                class="w-12 h-12 flex items-center justify-center rounded-full bg-[#25d366] hover:bg-[#128c7e] shadow-lg transition-all duration-300"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="28"
+                  height="28"
+                  viewBox="0 0 32 32"
+                  fill="white"
+                >
+                  <path
+                    d="M16 3C9.373 3 4 8.373 4 15c0 2.385.832 4.584 2.236 6.393L4 29l7.824-2.05C13.41 27.633 14.686 28 16 28c6.627 0 12-5.373 12-12S22.627 3 16 3zm0 22c-1.13 0-2.238-.188-3.287-.558l-.235-.08-4.646 1.217 1.24-4.53-.153-.236C7.188 19.238 7 18.13 7 17c0-4.963 4.037-9 9-9s9 4.037 9 9-4.037 9-9 9zm5.29-6.709c-.26-.13-1.54-.76-1.78-.85-.24-.09-.41-.13-.58.13-.17.26-.67.85-.82 1.02-.15.17-.3.19-.56.06-.26-.13-1.09-.4-2.07-1.28-.76-.68-1.27-1.52-1.42-1.78-.15-.26-.02-.4.11-.53.11-.11.26-.3.39-.45.13-.15.17-.26.26-.43.09-.17.04-.32-.02-.45-.06-.13-.58-1.4-.8-1.92-.21-.51-.43-.44-.58-.45-.15-.01-.32-.01-.5-.01-.17 0-.45.06-.68.28-.23.22-.9.88-.9 2.15 0 1.26.92 2.48 1.05 2.65.13.17 1.81 2.77 4.39 3.77.61.21 1.09.34 1.46.44.61.16 1.16.14 1.6.08.49-.07 1.54-.63 1.76-1.24.22-.61.22-1.13.15-1.24-.07-.11-.24-.17-.5-.3z"
+                  />
+                </svg>
+              </a>
+
+              <a
+                href="mailto:connect@fenzorlife.com"
+                title="Email"
+                class="w-12 h-12 flex items-center justify-center rounded-full bg-[#fbbf24] hover:bg-[#f59e42] shadow-lg transition-all duration-300"
+              >
+                <svg
+                  class="w-7 h-7"
+                  fill="none"
+                  stroke="white"
+                  stroke-width="2"
+                  viewBox="0 0 24 24"
+                >
+                  <rect
+                    x="3"
+                    y="5"
+                    width="18"
+                    height="14"
+                    rx="2"
+                    stroke="white"
+                    stroke-width="2"
+                  />
+                  <path d="M3 7l9 6 9-6" stroke="white" stroke-width="2" />
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Up Arrow Scroll-to-Top Button -->
+      <button
+        id="upArrow"
+        class="fixed bottom-8 right-8 z-50 w-12 h-12 rounded-full bg-gradient-to-br from-[#3a5ba0] to-[#60a5fa] shadow-lg flex items-center justify-center text-white hover:scale-110 transition-all duration-300"
+        style="display: none"
+        aria-label="Scroll to top"
+      >
+        <svg
+          class="w-7 h-7"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          viewBox="0 0 24 24"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M5 15l7-7 7 7"
+          />
+        </svg>
+      </button>
+      <script>
+        const upArrow = document.getElementById('upArrow');
+        window.addEventListener('scroll', () => {
+          if (window.scrollY > 300) {
+            upArrow.style.display = 'flex';
+          } else {
+            upArrow.style.display = 'none';
+          }
+        });
+        upArrow.addEventListener('click', () => {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+      </script>
+      <!-- Footer -->
+      <footer
+        class="footer w-full border-t border-[#bdbdbd]/60 bg-gradient-to-br from-[#e5e7eb] via-[#f7f7f7] to-[#bdbdbd] text-[#383838] py-10 px-4 md:px-0 mt-16 rounded-t-3xl shadow-inner text-base"
+        style="font-size: 1rem; letter-spacing: 0.04em"
+      >
+        <div
+          class="max-w-6xl mx-auto flex flex-col md:flex-row md:items-start items-center justify-between gap-8 md:gap-12 px-0 md:px-6 w-full"
+        >
+          <div
+            class="flex-1 mb-8 md:mb-0 flex flex-col items-center md:items-start text-center md:text-left gap-2"
+          >
+            <div
+              class="fenzor-logo text-2xl font-bold mb-2 flex items-center gap-2"
+            >
+              <img
+                src="123456789.png"
+                alt="Fenzor Logo"
+                class="w-20 h-10   "
+              />
+              
+            </div>
+            <div class="text-sm mb-3 italic text-[#3a5ba0]">
+              Innovating for a healthier tomorrow.
+            </div>
+            <div class="text-sm flex flex-col gap-1 mb-2">
+              <span
+                ><strong>Address:</strong><br />Unit No 203, 2nd Floor Suite
+                No.238, <br />SBR CV Towers, Sector-I, Sy No 64, <br />HUDA
+                Techno Enclave, <br />Madhapur, Hyderabad - 500081
+              </span>
+              <span
+                ><strong>Email:</strong>
+                <a
+                  href="mailto:connect@fenzorlife.com"
+                  class="underline hover:text-[#3a5ba0] transition"
+                  >connect@fenzorlife.com</a
+                ></span
+              >
+              <span
+                ><strong>Phone:</strong>
+                <a
+                  href="tel:+919946502468"
+                  class="underline hover:text-[#3a5ba0] transition"
+                  >+91 99465 02468</a
+                ></span
+              >
+            </div>
+          </div>
+          <div
+            class="flex-1 mb-8 md:mb-0 flex flex-col items-center md:items-start text-center md:text-left gap-2"
+          >
+            <div class="font-semibold mb-3 text-[#3a5ba0] tracking-wide">
+              Quick Links
+            </div>
+            <ul class="flex flex-col gap-2 text-sm">
+              <li>
+                <a href="#about" class="hover:text-[#3a5ba0] transition"
+                  >About Us</a
+                >
+              </li>
+              <li>
+                <a href="#directions" class="hover:text-[#3a5ba0] transition"
+                  >Our Directions</a
+                >
+              </li>
+              <li>
+                <a href="#products" class="hover:text-[#3a5ba0] transition"
+                  >Products</a
+                >
+              </li>
+              <li>
+                <a href="#contact" class="hover:text-[#3a5ba0] transition"
+                  >Contact</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div
+            class="flex-1 flex flex-col items-center md:items-end justify-between text-center md:text-right gap-2"
+          >
+            <div>
+              <div class="font-semibold mb-3 text-[#3a5ba0] tracking-wide">
+                Follow Us
+              </div>
+              <div class="flex gap-4 mb-4">
+                <a
+                  href="https://www.linkedin.com/me?trk=p_mwlite_profile_self-secondary_nav"
+                  target="_blank"
+                  rel="noopener"
+                  class="hover:text-[#3a5ba0] transition"
+                  title="LinkedIn"
+                >
+                  <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24">
+                    <path
+                      d="M19 0h-14c-2.76 0-5 2.24-5 5v14c0 2.76 2.24 5 5 5h14c2.76 0 5-2.24 5-5v-14c0-2.76-2.24-5-5-5zm-11 19h-3v-9h3v9zm-1.5-10.28c-.97 0-1.75-.79-1.75-1.75s.78-1.75 1.75-1.75 1.75.79 1.75 1.75-.78 1.75-1.75 1.75zm13.5 10.28h-3v-4.5c0-1.08-.02-2.47-1.5-2.47-1.5 0-1.73 1.17-1.73 2.39v4.58h-3v-9h2.89v1.23h.04c.4-.75 1.38-1.54 2.84-1.54 3.04 0 3.6 2 3.6 4.59v4.72z"
+                    />
+                  </svg>
+                </a>
+
+                <a
+                  href="https://www.facebook.com/share/16rmEuguNn/?mibextid=wwXIfr"
+                  target="_blank"
+                  rel="noopener"
+                  class="hover:text-[#3a5ba0] transition"
+                  title="Facebook"
+                >
+                  <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24">
+                    <path
+                      d="M22.675 0h-21.35c-.733 0-1.325.592-1.325 1.325v21.351c0 .732.592 1.324 1.325 1.324h11.495v-9.294h-3.128v-3.622h3.128v-2.672c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.797.143v3.24l-1.918.001c-1.504 0-1.797.715-1.797 1.763v2.313h3.587l-.467 3.622h-3.12v9.293h6.116c.73 0 1.322-.592 1.322-1.324v-21.35c0-.733-.592-1.325-1.325-1.325z"
+                    />
+                  </svg>
+                </a>
+
+                <a
+                  href="https://www.instagram.com/fenzor_lifesciences?igsh=MWpkNmpmczJvbWpu "
+                  target="_blank"
+                  rel="noopener"
+                  class="hover:text-[#3a5ba0] transition"
+                  title="Instagram"
+                >
+                  <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24">
+                    <path
+                      d="M12 2.2c3.2 0 3.6 0 4.9.1 1.2.1 1.9.2 2.3.4.5.2.9.4 1.3.8.4.4.6.8.8 1.3.2.4.3 1 .4 2.3.1 1.3.1 1.7.1 4.9s0 3.6-.1 4.9c-.1 1.2-.2 1.9-.4 2.3-.2.5-.4.9-.8 1.3-.4.4-.8.6-1.3.8-.4.2-1 .3-2.3.4-1.3.1-1.7.1-4.9.1s-3.6 0-4.9-.1c-1.2-.1-1.9-.2-2.3-.4a3.5 3.5 0 0 1-1.3-.8c-.4-.4-.6-.8-.8-1.3-.2-.4-.3-1-.4-2.3C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.9c.1-1.2.2-1.9.4-2.3.2-.5.4-.9.8-1.3.4-.4.8-.6 1.3-.8.4-.2 1-.3 2.3-.4C8.4 2.2 8.8 2.2 12 2.2m0-2.2C8.7 0 8.3 0 7 .1 5.6.2 4.6.5 3.8.9c-.9.4-1.6 1-2.3 1.7C.5 3.3 0 4.1.5 5c-.4.8-.7 1.8-.8 3.2C-.1 8.9 0 9.3 0 12s0 3.1.1 4.5c.1 1.4.4 2.4.8 3.2-.4.8-.5 1.7-.1 2.5.4.9 1 1.6 1.7 2.3.7.7 1.5 1.3 2.3 1.7.8.4 1.8.7 3.2.8 1.4.1 1.8.1 4.5.1s3.1 0 4.5-.1c1.4-.1 2.4-.4 3.2-.8.8-.4 1.6-1 2.3-1.7.7-.7 1.3-1.5 1.7-2.3.4-.8.7-1.8.8-3.2.1-1.4.1-1.8.1-4.5s0-3.1-.1-4.5c-.1-1.4-.4-2.4-.8-3.2.4-.8.5-1.7.1-2.5a5.4 5.4 0 0 0-1.7-2.3A5.4 5.4 0 0 0 20.2.9C19.4.5 18.4.2 17 .1 15.7 0 15.3 0 12 0zM12 5.8a6.2 6.2 0 1 0 0 12.4 6.2 6.2 0 0 0 0-12.4zm0 10.2a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.4-10.8a1.4 1.4 0 1 0 0 2.8 1.4 1.4 0 0 0 0-2.8z"
+                    />
+                  </svg>
+                </a>
+              </div>
+            </div>
+            <div class="flex w-full justify-center items-center mt-4">
+              <span class="text-xs text-[#83899a] text-center w-full block"
+                >&copy; 2025 Fenzor Life Sciences. All rights reserved.</span
+              >
+            </div>
+          </div>
+        </div>
+      </footer>
+
+     
+  </body>
+</html>

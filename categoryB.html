@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Category A - Fenzor Life Sciences</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="icon" type="image/png" href="favicon.png" />
+
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <style>
+      body {
+        /* font-family: "Inter", Arial, sans-serif; */
+        font-family: "Roboto";
+      }
+      .fenzor-logo {
+        /* font-family: "Playfair Display", serif; */
+        letter-spacing: 0.05em;
+      }
+    </style>
+  </head>
+  <body class="bg-[#f7f7f7] min-h-screen">
+    <header>
+      <nav
+        class="w-full flex items-center justify-between px-4 md:px-10 py-4 bg-white/90 shadow-md fixed top-0 left-0 z-50 border-b border-[#e5e7eb]"
+      >
+        <div class="flex items-center gap-3">
+          <img
+            src="fenzorofficiallogo.svg"
+            alt="Fenzor Logo"
+            class="w-20 h-10 object-contain"
+          />
+          <!-- <span
+              class="fenzor-logo text-2xl font-bold text-[#222] tracking-wide"
+              >Fenzor</span> -->
+        </div>
+        <ul
+          class="hidden md:flex gap-8 text-base font-medium text-[#222] items-center"
+        >
+          <li>
+            <a href="index.html#home" class="hover:text-[#3a5ba0] transition"
+              >Home</a
+            >
+          </li>
+          <li>
+            <a href="index.html#about" class="hover:text-[#3a5ba0] transition"
+              >About Us</a
+            >
+          </li>
+          <li>
+            <a
+              href="index.html#products"
+              class="hover:text-[#3a5ba0] transition"
+              >Products</a
+            >
+          </li>
+          <li>
+            <a
+              href="index.html#directions"
+              class="hover:text-[#3a5ba0] transition"
+              >Our Directions</a
+            >
+          </li>
+          <li>
+            <a href="index.html#contact" class="hover:text-[#3a5ba0] transition"
+              >Contact</a
+            >
+          </li>
+        </ul>
+
+        <div class="md:hidden">
+          <button
+            id="hamburger"
+            class="focus:outline-none relative z-[60] group"
+            aria-label="Open menu"
+          >
+            <span
+              class="block w-8 h-1 bg-[#3a5ba0] rounded transition-all duration-300 group-[.open]:rotate-45 group-[.open]:translate-y-2"
+            ></span>
+            <span
+              class="block w-8 h-1 bg-[#3a5ba0] rounded mt-1.5 transition-all duration-300 group-[.open]:opacity-0"
+            ></span>
+            <span
+              class="block w-8 h-1 bg-[#3a5ba0] rounded mt-1.5 transition-all duration-300 group-[.open]:-rotate-45 group-[.open]:-translate-y-2"
+            ></span>
+          </button>
+        </div>
+      </nav>
+      <!-- Mobile Menu Overlay -->
+      <div
+        id="mobileMenuOverlay"
+        class="fixed inset-0 bg-black/40 z-40 hidden transition-opacity duration-400"
+      ></div>
+      <ul
+        id="mobileMenu"
+        class="md:hidden fixed left-0 top-0 w-4/5 max-w-xs h-full bg-white px-8 pt-24 pb-10 text-[#222] font-semibold flex-col gap-2 shadow-2xl z-50 rounded-r-3xl transform -translate-x-full transition-transform duration-400 ease-in-out"
+      >
+        <li class="py-3 text-lg hover:text-[#3a5ba0] transition">
+          <a href="index.html#home">Home</a>
+        </li>
+        <li class="py-3 text-lg hover:text-[#3a5ba0] transition">
+          <a href="index.html#about">About Us</a>
+        </li>
+        <li class="py-3 text-lg hover:text-[#3a5ba0] transition">
+          <a href="index.html#products">Products</a>
+        </li>
+        <li class="py-3 text-lg hover:text-[#3a5ba0] transition">
+          <a href="index.html#directions">Our Directions</a>
+        </li>
+        <li class="py-3 text-lg hover:text-[#3a5ba0] transition">
+          <a href="index.html#contact">Contact</a>
+        </li>
+      </ul>
+      <script>
+        // Hamburger menu logic
+        const hamburger = document.getElementById("hamburger");
+        const mobileMenu = document.getElementById("mobileMenu");
+        const mobileMenuOverlay = document.getElementById("mobileMenuOverlay");
+        let menuOpen = false;
+        function openMenu() {
+          menuOpen = true;
+          hamburger.classList.add("open");
+          mobileMenu.classList.remove("-translate-x-full");
+          mobileMenu.classList.add("translate-x-0");
+          mobileMenuOverlay.classList.remove("hidden");
+          mobileMenuOverlay.classList.add("opacity-100");
+          document.body.style.overflow = "hidden";
+        }
+        function closeMenu() {
+          menuOpen = false;
+          hamburger.classList.remove("open");
+          mobileMenu.classList.add("-translate-x-full");
+          mobileMenu.classList.remove("translate-x-0");
+          mobileMenuOverlay.classList.add("hidden");
+          mobileMenuOverlay.classList.remove("opacity-100");
+          document.body.style.overflow = "";
+        }
+        hamburger.addEventListener("click", () => {
+          if (!menuOpen) openMenu();
+          else closeMenu();
+        });
+        mobileMenuOverlay.addEventListener("click", closeMenu);
+        // Close menu on nav click
+        Array.from(mobileMenu.querySelectorAll("a")).forEach((link) => {
+          link.addEventListener("click", closeMenu);
+        });
+        // Keyboard accessibility
+        document.addEventListener("keydown", (e) => {
+          if (menuOpen && (e.key === "Escape" || e.key === "Esc")) closeMenu();
+        });
+      </script>
+    </header>
+    <main class="max-w-7xl mx-auto py-16 px-4">
+      <h1
+        class="text-3xl md:text-5xl font-bold fenzor-logo text-[#3a5ba0] my-15 text-center drop-shadow-lg bg-gradient-to-r from-[#3a5ba0] to-[#9ba2b6] bg-clip-text text-transparent animate-gradient-x"
+      >
+        EVANTIS
+      </h1>
+      <div class="grid grid-cols-1 gap-13 sm:gap-18">
+        <!-- Medicine A1 -->
+        <div
+          class="relative items-end min-h-[14rem]  sm:min-h-[500px] rounded-3xl shadow-2xl hover:scale-105 transition-transform duration-300 flex flex-row sm:items-center overflow-hidden"
+        >
+          <div
+            class="absolute inset-0 z-0"
+            style="
+              background: linear-gradient(
+                  90deg,
+                  #ffffff5d 0%,
+
+                  transparent 100%
+                ),
+                url('fenzor_1.jpg');
+              background-position: 100%;
+              background-size: cover;
+            "
+          ></div>
+          <div  class="flex-1  sm:ml-20 relative z-10">
+            <div
+              class="font-bold  sm:py-0 text-center  text-2xl sm:text-4xl sm:mb-6 text-white text-shadow-lg/20 sm:text-left"
+            >
+              DEXOCORT-6
+            </div>
+             <p
+              class="hidden sm:inline-block text-lg text-[#555] text-left mb-2 max-w-[300px] leading-relaxed"
+            >
+              Dexocort-6 contains Dexamethasone, a corticosteroid used to reduce
+              inflammation and suppress the immune response in various
+              conditions such as allergies, arthritis, skin problems, and
+              certain autoimmune diseases.
+            </p>
+          </div>
+        </div>
+        <!-- Medicine A2 -->
+        <div
+          class="relative items-end min-h-[14rem]  sm:min-h-[500px] rounded-3xl shadow-2xl hover:scale-105 transition-transform duration-300 flex flex-row sm:items-center overflow-hidden"
+        >
+          <div
+            class="absolute inset-0 z-0"
+            style="
+              background: linear-gradient(
+                  90deg,
+                  #ffffff5d 0%,
+
+                  transparent 100%
+                ),
+                url('fenzor_2.jpg');
+              background-position: 100%;
+              background-size: cover;
+            "
+          ></div>
+          <div  class="flex-1  sm:ml-20 relative z-10">
+            <div
+              class="font-bold  sm:py-0 text-center  text-2xl sm:text-4xl sm:mb-6 text-white text-shadow-lg/20 sm:text-left"
+            >
+              DEXOCORT-6
+            </div>
+             <p
+              class="hidden sm:inline-block text-lg text-[#555] text-left mb-2 max-w-[300px] leading-relaxed"
+            >
+              Dexocort-6 contains Dexamethasone, a corticosteroid used to reduce
+              inflammation and suppress the immune response in various
+              conditions such as allergies, arthritis, skin problems, and
+              certain autoimmune diseases.
+            </p>
+          </div>
+        </div>
+        <!-- Medicine A3 -->
+        <div
+          class="relative items-end min-h-[14rem]  sm:min-h-[500px] rounded-3xl shadow-2xl hover:scale-105 transition-transform duration-300 flex flex-row sm:items-center overflow-hidden"
+        >
+          <div
+            class="absolute inset-0 z-0"
+            style="
+              background: linear-gradient(
+                  90deg,
+                  #ffffff5d 0%,
+
+                  transparent 100%
+                ),
+                url('fenzor_3.jpg');
+              background-position: 100%;
+              background-size: cover;
+            "
+          ></div>
+          <div  class="flex-1  sm:ml-20 relative z-10">
+            <div
+              class="font-bold  sm:py-0 text-center  text-2xl sm:text-4xl sm:mb-6 text-white text-shadow-lg/20 sm:text-left"
+            >
+              DEXOCORT-6
+            </div>
+             <p
+              class="hidden sm:inline-block text-lg text-[#555] text-left mb-2 max-w-[300px] leading-relaxed"
+            >
+              Dexocort-6 contains Dexamethasone, a corticosteroid used to reduce
+              inflammation and suppress the immune response in various
+              conditions such as allergies, arthritis, skin problems, and
+              certain autoimmune diseases.
+            </p>
+          </div>
+        </div>
+        <!-- Medicine A4 -->
+        <div
+          class="relative items-end min-h-[14rem]  sm:min-h-[500px] rounded-3xl shadow-2xl hover:scale-105 transition-transform duration-300 flex flex-row sm:items-center overflow-hidden"
+        >
+          <div
+            class="absolute inset-0 z-0"
+            style="
+              background: linear-gradient(
+                  90deg,
+                  #ffffff5d 0%,
+
+                  transparent 100%
+                ),
+                url('fenzor_4.jpg');
+              background-position: 100%;
+              background-size: cover;
+            "
+          ></div>
+          <div  class="flex-1  sm:ml-20 relative z-10">
+            <div
+              class="font-bold  sm:py-0 text-center  text-2xl sm:text-4xl sm:mb-6 text-white text-shadow-lg/20 sm:text-left"
+            >
+              DEXOCORT-6
+            </div>
+             <p
+              class="hidden sm:inline-block text-lg text-[#555] text-left mb-2 max-w-[300px] leading-relaxed"
+            >
+              Dexocort-6 contains Dexamethasone, a corticosteroid used to reduce
+              inflammation and suppress the immune response in various
+              conditions such as allergies, arthritis, skin problems, and
+              certain autoimmune diseases.
+            </p>
+          </div>
+        </div>
+
+        <!-- Medicine A6 -->
+        <div
+          class="relative items-end min-h-[14rem]  sm:min-h-[500px] rounded-3xl shadow-2xl hover:scale-105 transition-transform duration-300 flex flex-row sm:items-center overflow-hidden"
+        >
+          <div
+            class="absolute inset-0 z-0"
+            style="
+              background: linear-gradient(
+                  90deg,
+                  #ffffff5d 0%,
+
+                  transparent 100%
+                ),
+                url('fenzor_6.jpg');
+              background-position: 100%;
+              background-size: cover;
+            "
+          ></div>
+          <div  class="flex-1  sm:ml-20 relative z-10">
+            <div
+              class="font-bold  sm:py-0 text-center  text-2xl sm:text-4xl sm:mb-6 text-white text-shadow-lg/20 sm:text-left"
+            >
+              DEXOCORT-6
+            </div>
+             <p
+              class="hidden sm:inline-block text-lg text-[#555] text-left mb-2 max-w-[300px] leading-relaxed"
+            >
+              Dexocort-6 contains Dexamethasone, a corticosteroid used to reduce
+              inflammation and suppress the immune response in various
+              conditions such as allergies, arthritis, skin problems, and
+              certain autoimmune diseases.
+            </p>
+          </div>
+        </div>
+
+
+        <div
+          class="relative items-end min-h-[14rem]  sm:min-h-[500px] rounded-3xl shadow-2xl hover:scale-105 transition-transform duration-300 flex flex-row sm:items-center overflow-hidden"
+        >
+          <div
+            class="absolute inset-0 z-0"
+            style="
+              background: linear-gradient(
+                  90deg,
+                  #ffffff5d 0%,
+
+                  transparent 100%
+                ),
+                url('fenzor_8.jpg');
+              background-position: 100%;
+              background-size: cover;
+            "
+          ></div>
+          <div  class="flex-1  sm:ml-20 relative z-10">
+            <div
+              class="font-bold  sm:py-0 text-center  text-2xl sm:text-4xl sm:mb-6 text-white text-shadow-lg/20 sm:text-left"
+            >
+              DEXOCORT-6
+            </div>
+             <p
+              class="hidden sm:inline-block text-lg text-[#555] text-left mb-2 max-w-[300px] leading-relaxed"
+            >
+              Dexocort-6 contains Dexamethasone, a corticosteroid used to reduce
+              inflammation and suppress the immune response in various
+              conditions such as allergies, arthritis, skin problems, and
+              certain autoimmune diseases.
+            </p>
+          </div>
+        </div>
+
+
+        <div
+          class="relative items-end min-h-[14rem]  sm:min-h-[500px] rounded-3xl shadow-2xl hover:scale-105 transition-transform duration-300 flex flex-row sm:items-center overflow-hidden"
+        >
+          <div
+            class="absolute inset-0 z-0"
+            style="
+              background: linear-gradient(
+                  90deg,
+                  #ffffff5d 0%,
+
+                  transparent 100%
+                ),
+                url('fenzor_9.jpg');
+              background-position: 100%;
+              background-size: cover;
+            "
+          ></div>
+          <div  class="flex-1  sm:ml-20 relative z-10">
+            <div
+              class="font-bold  sm:py-0 text-center  text-2xl sm:text-4xl sm:mb-6 text-white text-shadow-lg/20 sm:text-left"
+            >
+              DEXOCORT-6
+            </div>
+             <p
+              class="hidden sm:inline-block text-lg text-[#555] text-left mb-2 max-w-[300px] leading-relaxed"
+            >
+              Dexocort-6 contains Dexamethasone, a corticosteroid used to reduce
+              inflammation and suppress the immune response in various
+              conditions such as allergies, arthritis, skin problems, and
+              certain autoimmune diseases.
+            </p>
+          </div>
+        </div>
+
+         <div
+          class="relative items-end min-h-[14rem]  sm:min-h-[500px] rounded-3xl shadow-2xl hover:scale-105 transition-transform duration-300 flex flex-row sm:items-center overflow-hidden"
+        >
+          <div
+            class="absolute inset-0 z-0"
+            style="
+              background: linear-gradient(
+                  90deg,
+                  #ffffff5d 0%,
+
+                  transparent 100%
+                ),
+                url('fenzor_10.jpg');
+              background-position: 100%;
+              background-size: cover;
+            "
+          ></div>
+          <div  class="flex-1  sm:ml-20 relative z-10">
+            <div
+              class="font-bold  sm:py-0 text-center  text-2xl sm:text-4xl sm:mb-6 text-white text-shadow-lg/20 sm:text-left"
+            >
+              DEXOCORT-6
+            </div>
+             <p
+              class="hidden sm:inline-block text-lg text-[#555] text-left mb-2 max-w-[300px] leading-relaxed"
+            >
+              Dexocort-6 contains Dexamethasone, a corticosteroid used to reduce
+              inflammation and suppress the immune response in various
+              conditions such as allergies, arthritis, skin problems, and
+              certain autoimmune diseases.
+            </p>
+          </div>
+        </div>
+
+        <div
+          class="relative items-end min-h-[14rem]  sm:min-h-[500px] rounded-3xl shadow-2xl hover:scale-105 transition-transform duration-300 flex flex-row sm:items-center overflow-hidden"
+        >
+          <div
+            class="absolute inset-0 z-0"
+            style="
+              background: linear-gradient(
+                  90deg,
+                  #ffffff5d 0%,
+
+                  transparent 100%
+                ),
+                url('fenzor_7.jpg');
+              background-position: 100%;
+              background-size: cover;
+            "
+          ></div>
+          <div  class="flex-1  sm:ml-20 relative z-10">
+            <div
+              class="font-bold  sm:py-0 text-center  text-2xl sm:text-4xl sm:mb-6 text-white text-shadow-lg/20 sm:text-left"
+            >
+              DEXOCORT-6
+            </div>
+             <p
+              class="hidden sm:inline-block text-lg text-[#555] text-left mb-2 max-w-[300px] leading-relaxed"
+            >
+              Dexocort-6 contains Dexamethasone, a corticosteroid used to reduce
+              inflammation and suppress the immune response in various
+              conditions such as allergies, arthritis, skin problems, and
+              certain autoimmune diseases.
+            </p>
+          </div>
+        </div>
+
+        <div
+          class="relative items-end min-h-[14rem]  sm:min-h-[500px] rounded-3xl shadow-2xl hover:scale-105 transition-transform duration-300 flex flex-row sm:items-center overflow-hidden"
+        >
+          <div
+            class="absolute inset-0 z-0"
+            style="
+              background: linear-gradient(
+                  90deg,
+                  #ffffff5d 0%,
+
+                  transparent 100%
+                ),
+                url('fenzor_11.jpg');
+              background-position: 100%;
+              background-size: cover;
+            "
+          ></div>
+          <div  class="flex-1  sm:ml-20 relative z-10">
+            <div
+              class="font-bold  sm:py-0 text-center  text-2xl sm:text-4xl sm:mb-6 text-white text-shadow-lg/20 sm:text-left"
+            >
+              DEXOCORT-6
+            </div>
+             <p
+              class="hidden sm:inline-block text-lg text-[#555] text-left mb-2 max-w-[300px] leading-relaxed"
+            >
+              Dexocort-6 contains Dexamethasone, a corticosteroid used to reduce
+              inflammation and suppress the immune response in various
+              conditions such as allergies, arthritis, skin problems, and
+              certain autoimmune diseases.
+            </p>
+          </div>
+        </div>
+
+      </div>
+      <div class="w-full flex justify-center items-center mt-12">
+        <a
+          href="index.html"
+          class="inline-flex items-center gap-3 justify-center bg-gradient-to-r from-[#3a5ba0] to-[#60a5fa] hover:from-[#1a2a33] hover:to-[#3a5ba0] text-white font-bold text-lg px-10 py-5 rounded-full shadow-lg transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-[#3a5ba0] focus:ring-offset-2 select-none cursor-pointer mt-8"
+        >
+          <svg
+            class="w-7 h-7 mr-2"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M15 19l-7-7 7-7"
+            />
+          </svg>
+          Back to Home
+        </a>
+      </div>
+    </main>
+  </body>
+</html>
