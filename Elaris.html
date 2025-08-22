@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Elaris</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="icon" type="image/png" href="favicon.png" />
+
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <style>
+      body {
+        /* font-family: "Inter", Arial, sans-serif; */
+        font-family: "Roboto";
+      }
+      .fenzor-logo {
+        /* font-family: "Playfair Display", serif; */
+        letter-spacing: 0.05em;
+      }
+    </style>
+  </head>
+  <body class="bg-[#f7f7f7] min-h-screen">
+    <header>
+      <nav
+        class="w-full flex items-center justify-between px-4 md:px-10 py-4 bg-white/90 shadow-md fixed top-0 left-0 z-50 border-b border-[#e5e7eb]"
+      >
+        <div class="flex items-center gap-3">
+          <a href="index.html#home" aria-label="Go to Home">
+            <img
+              src="./assets/images/logo123.svg"
+              alt="Fenzor Logo"
+              class="w-20 h-10 object-contain cursor-pointer hover:scale-105 transition-transform duration-200"
+            />
+          </a>
+          <!-- <span
+              class="fenzor-logo text-2xl font-bold text-[#222] tracking-wide"
+              >Fenzor</span> -->
+        </div>
+        <ul
+          class="hidden md:flex gap-8 text-base font-medium text-[#222] items-center"
+        >
+          <li>
+            <a href="index.html#home" class="hover:text-[#3a5ba0] transition"
+              >Home</a
+            >
+          </li>
+          <li>
+            <a href="index.html#about" class="hover:text-[#3a5ba0] transition"
+              >About Us</a
+            >
+          </li>
+          <li>
+            <a
+              href="index.html#products"
+              class="hover:text-[#3a5ba0] transition"
+              >Products</a
+            >
+          </li>
+          <li>
+            <a
+              href="index.html#directions"
+              class="hover:text-[#3a5ba0] transition"
+              >Our Directions</a
+            >
+          </li>
+          <li>
+            <a href="index.html#contact" class="hover:text-[#3a5ba0] transition"
+              >Contact</a
+            >
+          </li>
+        </ul>
+
+        <div class="md:hidden">
+          <button
+            id="hamburger"
+            class="focus:outline-none relative z-[60] group"
+            aria-label="Open menu"
+          >
+            <span
+              class="block w-8 h-1 bg-[#3a5ba0] rounded transition-all duration-300 group-[.open]:rotate-45 group-[.open]:translate-y-2"
+            ></span>
+            <span
+              class="block w-8 h-1 bg-[#3a5ba0] rounded mt-1.5 transition-all duration-300 group-[.open]:opacity-0"
+            ></span>
+            <span
+              class="block w-8 h-1 bg-[#3a5ba0] rounded mt-1.5 transition-all duration-300 group-[.open]:-rotate-45 group-[.open]:-translate-y-2"
+            ></span>
+          </button>
+        </div>
+      </nav>
+      <!-- Mobile Menu Overlay -->
+      <div
+        id="mobileMenuOverlay"
+        class="fixed inset-0 bg-black/40 z-40 hidden transition-opacity duration-400"
+      ></div>
+      <ul
+        id="mobileMenu"
+        class="md:hidden fixed left-0 top-0 w-4/5 max-w-xs h-full bg-white px-8 pt-24 pb-10 text-[#222] font-semibold flex-col gap-2 shadow-2xl z-50 rounded-r-3xl transform -translate-x-full transition-transform duration-400 ease-in-out"
+      >
+        <li class="py-3 text-lg hover:text-[#3a5ba0] transition">
+          <a href="index.html#home">Home</a>
+        </li>
+        <li class="py-3 text-lg hover:text-[#3a5ba0] transition">
+          <a href="index.html#about">About Us</a>
+        </li>
+        <li class="py-3 text-lg hover:text-[#3a5ba0] transition">
+          <a href="index.html#products">Products</a>
+        </li>
+        <li class="py-3 text-lg hover:text-[#3a5ba0] transition">
+          <a href="index.html#directions">Our Directions</a>
+        </li>
+        <li class="py-3 text-lg hover:text-[#3a5ba0] transition">
+          <a href="index.html#contact">Contact</a>
+        </li>
+      </ul>
+      <script>
+        // Hamburger menu logic
+        const hamburger = document.getElementById("hamburger");
+        const mobileMenu = document.getElementById("mobileMenu");
+        const mobileMenuOverlay = document.getElementById("mobileMenuOverlay");
+        let menuOpen = false;
+        function openMenu() {
+          menuOpen = true;
+          hamburger.classList.add("open");
+          mobileMenu.classList.remove("-translate-x-full");
+          mobileMenu.classList.add("translate-x-0");
+          mobileMenuOverlay.classList.remove("hidden");
+          mobileMenuOverlay.classList.add("opacity-100");
+          document.body.style.overflow = "hidden";
+        }
+        function closeMenu() {
+          menuOpen = false;
+          hamburger.classList.remove("open");
+          mobileMenu.classList.add("-translate-x-full");
+          mobileMenu.classList.remove("translate-x-0");
+          mobileMenuOverlay.classList.add("hidden");
+          mobileMenuOverlay.classList.remove("opacity-100");
+          document.body.style.overflow = "";
+        }
+        hamburger.addEventListener("click", () => {
+          if (!menuOpen) openMenu();
+          else closeMenu();
+        });
+        mobileMenuOverlay.addEventListener("click", closeMenu);
+        // Close menu on nav click
+        Array.from(mobileMenu.querySelectorAll("a")).forEach((link) => {
+          link.addEventListener("click", closeMenu);
+        });
+        // Keyboard accessibility
+        document.addEventListener("keydown", (e) => {
+          if (menuOpen && (e.key === "Escape" || e.key === "Esc")) closeMenu();
+        });
+      </script>
+    </header>
+    <main class="max-w-7xl mx-auto py-16 px-4">
+      <h1
+        class="text-3xl md:text-5xl font-bold fenzor-logo text-[#3a5ba0] mt-15 text-center drop-shadow-lg bg-gradient-to-r from-[#3a5ba0] to-[#9ba2b6] bg-clip-text text-transparent animate-gradient-x"
+      >
+        ELARIS
+      </h1>
+      <p
+        class="text-center text-xl font-semibold mt-2 mb-10 drop-shadow-lg bg-gradient-to-r from-[#3a5ba0] to-[#9ba2b6] bg-clip-text text-transparent animate-gradient-x"
+      >
+        (General Division)
+      </p>
+      <div class="grid grid-cols-1 gap-13 sm:gap-18">
+        <!-- Medicine A1 -->
+        <div
+          class="relative items-end min-h-[14rem] sm:min-h-[500px] md:min-h-[500px] rounded-3xl shadow-2xl hover:scale-105 transition-transform duration-300 flex flex-row xl:items-center overflow-hidden ">
+          <div
+            class="absolute inset-0 z-0"
+            style="
+              background: linear-gradient(
+                  90deg,
+                  #ffffff5d 0%,
+
+                  transparent 100%
+                ),
+                url('./assets/images/fenzor_1.jpg');
+              background-position: 100%;
+              background-size: cover;
+            "
+          ></div>
+          <div class="flex-1 sm:ml-20 relative z-10">
+            
+            <div
+              class="font-bold sm:py-0 text-center text-2xl sm:text-4xl sm:mb-6 text-blue-800 text-shadow-lg/20 xl:text-left "
+            >
+              DEXOCORT-6
+            </div>
+            <p
+              class="hidden xl:inline-block text-lg text-[#555] text-left mb-2 max-w-[300px] leading-relaxed"
+            >
+              Dexocort-6 is a trusted formulation of Deflazacort 6 mg, offering effective anti-inflammatory and immunosuppressive action for a wide range of chronic inflammatory and autoimmune conditions. It is especially useful in managing disorders like rheumatoid arthritis, asthma, allergic reactions, and muscular dystrophies. 
+            </p>
+          </div>
+        </div>
+        <!-- Medicine A2 -->
+        <div
+          class="relative items-end min-h-[14rem] sm:min-h-[400px] md:min-h-[500px] rounded-3xl shadow-2xl hover:scale-105 transition-transform duration-300 flex flex-row xl:items-center overflow-hidden"
+        >
+          <div
+            class="absolute inset-0 z-0"
+            style="
+              background: linear-gradient(
+                  90deg,
+                  #ffffff5d 0%,
+
+                  transparent 100%
+                ),
+                url('./assets/images/fenzor_2.jpg');
+              background-position: 100%;
+              background-size: cover;
+            "
+          ></div>
+          <div class="flex-1 sm:ml-20 relative z-10">
+            <div
+              class="font-bold sm:py-0 text-center text-2xl sm:text-4xl sm:mb-6 text-blue-800 text-shadow-lg/20 xl:text-left"
+            >
+              FENCLAV-625
+
+            </div>
+              <p class="hidden xl:inline-block text-lg text-[#555] text-left mb-2 max-w-[300px] leading-relaxed">
+             Fenclav 625 is a powerful combination of Amoxicillin (500 mg), a broad-spectrum penicillin antibiotic, and Clavulanic Acid (125 mg), a β-lactamase inhibitor that protects Amoxicillin from enzymatic degradation. This synergistic pairing extends antimicrobial coverage against β-lactamase-producing bacteria.
+            </p>
+          </div>
+        </div>
+          
+        <!-- Medicine A3 -->
+        <div
+          class="relative items-end min-h-[14rem] sm:min-h-[400px] md:min-h-[500px] rounded-3xl shadow-2xl hover:scale-105 transition-transform duration-300 flex flex-row xl:items-center overflow-hidden"
+        >
+          <div
+            class="absolute inset-0 z-0"
+            style="
+              background: linear-gradient(
+                  90deg,
+                  #ffffff5d 0%,
+
+                  transparent 100%
+                ),
+                url('./assets/images/fenzor_3.jpg');
+              background-position: 100%;
+              background-size: cover;
+            "
+          ></div>
+          <div class="flex-1 sm:ml-20 relative z-10">
+            <div
+              class="font-bold sm:py-0 text-center text-2xl sm:text-4xl sm:mb-6 text-blue-800 text-shadow-lg/20 xl:text-left"
+            >
+              FENCLAV 228.5
+            </div>
+            <p
+              class="hidden xl:inline-block text-lg text-[#555] text-left mb-2 max-w-[300px] leading-relaxed"
+            >
+              Fenclav 228.5 contains Amoxicillin 200 mg and Clavulanic Acid 28.5 mg per 5 mL, formulated for safe and effective use in infants and toddlers. It provides targeted action against resistant organisms in conditions like lower respiratory tract infections, otitis media, and soft tissue infections. 
+            </p>
+          </div>
+        </div>
+        <!-- Medicine A4 -->
+        <div
+          class="relative items-end min-h-[14rem] sm:min-h-[400px] md:min-h-[500px] rounded-3xl shadow-2xl hover:scale-105 transition-transform duration-300 flex flex-row xl:items-center overflow-hidden"
+        >
+          <div
+            class="absolute inset-0 z-0"
+            style="
+              background: linear-gradient(
+                  90deg,
+                  #ffffff5d 0%,
+
+                  transparent 100%
+                ),
+                url('./assets/images/fenzor_4.jpg');
+              background-position: 100%;
+              background-size: cover;
+            "
+          ></div>
+          <div class="flex-1 sm:ml-20 relative z-10">
+            <div
+              class="font-bold sm:py-0 text-center text-2xl sm:text-4xl sm:mb-6 text-blue-800 text-shadow-lg/20 xl:text-left"
+            >
+              FENCLAV 457
+            </div>
+            <p
+              class="hidden xl:inline-block text-lg text-[#555] text-left mb-2 max-w-[300px] leading-relaxed"
+            >
+              
+            Fenclav 457 is a pediatric formulation combining Amoxicillin 400 mg and Clavulanic Acid 57 mg per 5 mL, designed for broad-spectrum bacterial coverage in children. It is highly effective in treating pediatric respiratory tract infections, otitis media, pharyngitis, tonsillitis, and skin infections caused by β-lactamase-producing pathogens.
+            </p>
+          </div>
+        </div>
+
+        <!-- Medicine A6 -->
+        <div
+          class="relative items-end min-h-[14rem] sm:min-h-[400px] md:min-h-[500px] rounded-3xl shadow-2xl hover:scale-105 transition-transform duration-300 flex flex-row xl:items-center overflow-hidden"
+        >
+          <div
+            class="absolute inset-0 z-0"
+            style="
+              background: linear-gradient(
+                  90deg,
+                  #ffffff5d 0%,
+
+                  transparent 100%
+                ),
+                url('./assets/images/fenzor_6.jpg');
+              background-position: 100%;
+              background-size: cover;
+            "
+          ></div>
+          <div class="flex-1 sm:ml-20 relative z-10">
+            <div
+              class="font-bold sm:py-0 text-center text-2xl sm:text-4xl sm:mb-6 text-blue-800 text-shadow-lg/20 xl:text-left"
+            >
+              FENXONE 1 GM
+            </div>
+            <p
+              class="hidden xl:inline-block text-lg text-[#555] text-left mb-2 max-w-[300px] leading-relaxed"
+            >
+              Fenxone 1 gm contains Ceftriaxone, a third-generation cephalosporin antibiotic with broad-spectrum bactericidal activity. It works by inhibiting bacterial cell wall synthesis and is highly effective against a wide range of Gram-positive and Gram-negative organisms, including resistant strains.
+            </p>
+          </div>
+        </div>
+
+        <div
+          class="relative items-end min-h-[14rem] sm:min-h-[400px] md:min-h-[500px] rounded-3xl shadow-2xl hover:scale-105 transition-transform duration-300 flex flex-row xl:items-center overflow-hidden"
+        >
+          <div
+            class="absolute inset-0 z-0"
+            style="
+              background: linear-gradient(
+                  90deg,
+                  #ffffff5d 0%,
+
+                  transparent 100%
+                ),
+                url('./assets/images/fenzor_7.jpg');
+              background-position: 100%;
+              background-size: cover;
+            "
+          ></div>
+          <div class="flex-1 sm:ml-20 relative z-10">
+            <div
+              class="font-bold sm:py-0 text-center text-2xl sm:text-4xl sm:mb-6 text-blue-800 text-shadow-lg/20 xl:text-left"
+            >
+              FENXONE S
+            </div>
+            <p
+              class="hidden xl:inline-block text-lg text-[#555] text-left mb-2 max-w-[300px] leading-relaxed"
+            >
+              
+Fenxone-S is a synergistic combination of Ceftriaxone, a third-generation cephalosporin, and Sulbactam, a β-lactamase inhibitor that enhances Ceftriaxone’s activity against resistant pathogens. This powerful pairing provides extended-spectrum coverage against multi-drug resistant Gram-positive and Gram-negative bacteria.
+            </p>
+          </div>
+        </div>
+
+        <div
+          class="relative items-end min-h-[14rem] sm:min-h-[400px] md:min-h-[500px] rounded-3xl shadow-2xl hover:scale-105 transition-transform duration-300 flex flex-row xl:items-center overflow-hidden"
+        >
+          <div
+            class="absolute inset-0 z-0"
+            style="
+              background: linear-gradient(
+                  90deg,
+                  #ffffff5d 0%,
+
+                  transparent 100%
+                ),
+                url('./assets/images/fenzor_8.jpg');
+              background-position: 100%;
+              background-size: cover;
+            "
+          ></div>
+          <div class="flex-1 sm:ml-20 relative z-10">
+            <div
+              class="font-bold sm:py-0 text-center text-2xl sm:text-4xl sm:mb-6  text-blue-800 text-shadow-lg/20 xl:text-left"
+            >
+              FENZOPAN-40
+            </div>
+            <p
+              class="hidden xl:inline-block text-lg text-[#555] text-left mb-2 max-w-[300px] leading-relaxed"
+            >
+             Fenzopan 40 contains Pantoprazole 40 mg, a proton pump inhibitor (PPI) that provides powerful and long-lasting acid suppression by irreversibly inhibiting the H⁺/K⁺-ATPase enzyme in gastric parietal cells. It is highly effective in the treatment of GERD, peptic ulcers, erosive esophagitis, and Zollinger-Ellison syndrome. With rapid onset and once-daily dosing,
+            </p>
+          </div>
+        </div>
+
+        <div
+          class="relative items-end min-h-[14rem] sm:min-h-[400px] md:min-h-[500px] rounded-3xl shadow-2xl hover:scale-105 transition-transform duration-300 flex flex-row xl:items-center overflow-hidden"
+        >
+          <div
+            class="absolute inset-0 z-0"
+            style="
+              background: linear-gradient(
+                  90deg,
+                  #ffffff5d 0%,
+
+                  transparent 100%
+                ),
+                url('./assets/images/fenzor_9.jpg');
+              background-position: 100%;
+              background-size: cover;
+            "
+          ></div>
+          <div class="flex-1 sm:ml-20 relative z-10">
+            <div
+              class="font-bold sm:py-0 text-center text-2xl sm:text-4xl sm:mb-6 text-blue-800 text-shadow-lg/20 xl:text-left"
+            >
+              LEVORITZ-M
+            </div>
+            <p
+              class="hidden xl:inline-block text-lg text-[#555] text-left mb-2 max-w-[300px] leading-relaxed"
+            >
+              Levoritz-M combines Montelukast (a leukotriene receptor antagonist) and Levocetirizine (a third-generation antihistamine) to offer dual-action relief from allergic rhinitis, seasonal allergies, and asthma-related symptoms. While Levocetirizine effectively blocks H1 receptors to reduce sneezing, itching, and runny nose.
+            </p>
+          </div>
+        </div>
+
+        <div
+          class="relative items-end min-h-[14rem] sm:min-h-[400px] md:min-h-[500px] rounded-3xl shadow-2xl hover:scale-105 transition-transform duration-300 flex flex-row xl:items-center overflow-hidden"
+        >
+          <div
+            class="absolute inset-0 z-0"
+            style="
+              background: linear-gradient(
+                  90deg,
+                  #ffffff5d 0%,
+
+                  transparent 100%
+                ),
+                url('./assets/images/fenzor_10.jpg');
+              background-position: 100%;
+              background-size: cover;
+            "
+          ></div>
+          <div class="flex-1 sm:ml-20 relative z-10">
+            <div
+              class="font-bold sm:py-0 text-center text-2xl sm:text-4xl sm:mb-6 text-blue-800 text-shadow-lg/20 xl:text-left"
+            >
+              LEVORITZ-M SYRUP
+            </div>
+            <p
+              class="hidden xl:inline-block text-lg text-[#555] text-left mb-2 max-w-[300px] leading-relaxed"
+            >
+              Levoritz-M Syrup is a pediatric-friendly combination of Montelukast Sodium and Levocetirizine Dihydrochloride, offering comprehensive relief from allergic rhinitis, chronic urticaria, and mild asthma symptoms in children. Levocetirizine acts as a potent, non-sedating antihistamine that controls nasal congestion, sneezing, and itching.
+            </p>
+          </div>
+        </div>
+
+        
+
+        <div
+          class="relative items-end min-h-[14rem] sm:min-h-[400px] md:min-h-[500px] rounded-3xl shadow-2xl hover:scale-105 transition-transform duration-300 flex flex-row xl:items-center overflow-hidden"
+        
+          >
+          <div
+            class="absolute inset-0 z-0"
+            style="
+              background: linear-gradient(
+                  90deg,
+                  #ffffff5d 0%,
+
+                  transparent 100%
+                ),
+                url('./assets/images/fenzor_11.jpg');
+              background-position: 100%;
+              background-size: cover;
+            "
+          ></div>
+          <div class="flex-1 sm:ml-20 relative z-10">
+
+          
+        
+            <div
+              class="font-bold sm:py-0 text-center text-2xl sm:text-4xl sm:mb-6 text-blue-800 text-shadow-lg/20 xl:text-left"
+            >
+              TOFFY-D
+            </div>
+            
+            <p
+              class="hidden xl:inline-block text-lg text-[#555] text-left mb-2 max-w-[300px] leading-relaxed"
+            >
+             Toffy-D Syrup is a balanced triple-action formula combining Phenylephrine (5 mg/5 mL), a selective α₁-adrenergic agonist that reduces nasal congestion; Chlorpheniramine Maleate (2 mg/5 mL), an antihistamine that relieves sneezing, rhinorrhea, and allergic symptoms; and Dextromethorphan Hydrobromide (10 mg/5 mL), a centrally acting antitussive that suppresses dry, irritating cough.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="w-full flex justify-center items-center mt-12">
+        <a
+          href="index.html"
+          class="inline-flex items-center gap-3 justify-center bg-gradient-to-r from-[#3a5ba0] to-[#60a5fa] hover:from-[#1a2a33] hover:to-[#3a5ba0] text-white font-bold text-lg px-10 py-5 rounded-full shadow-lg transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-[#3a5ba0] focus:ring-offset-2 select-none cursor-pointer mt-8"
+        >
+          <svg
+            class="w-7 h-7 mr-2"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M15 19l-7-7 7-7"
+            />
+          </svg>
+          Back to Home
+        </a>
+      </div>
+    </main>
+  </body>
+</html>
